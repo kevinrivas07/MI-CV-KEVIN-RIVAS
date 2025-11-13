@@ -148,3 +148,66 @@ function initMap() {
       ]
     });
 }
+
+// Portfolio Read More functionality
+$(document).ready(function() {
+    // Wait a bit for CSS to apply
+    setTimeout(function() {
+        // Check if text needs "Ver más" button
+        function checkTextOverflow() {
+            $('.portfolio-description').each(function() {
+                var $description = $(this);
+                var $readMoreBtn = $description.closest('.card-body').find('.read-more-btn');
+                
+                // If button doesn't exist, skip
+                if ($readMoreBtn.length === 0) return;
+                
+                // Reset to check natural height
+                $description.removeClass('expanded');
+                
+                // Force a reflow to get accurate measurements
+                void $description[0].offsetHeight;
+                
+                // Check if text is truncated
+                var scrollHeight = $description[0].scrollHeight;
+                var clientHeight = $description[0].clientHeight;
+                
+                // Always show button if text is longer than 3 lines (approximately)
+                // For descriptions with IDs (our specific projects), always show
+                if ($description.attr('id') || scrollHeight > clientHeight + 5) {
+                    $readMoreBtn.removeClass('hidden').css('display', 'inline-block');
+                } else {
+                    $readMoreBtn.addClass('hidden');
+                }
+            });
+        }
+        
+        // Initialize on page load
+        checkTextOverflow();
+        
+        // Re-check on window resize
+        $(window).on('resize', function() {
+            setTimeout(checkTextOverflow, 100);
+        });
+        
+        // Handle "Ver más" click
+        $(document).on('click', '.read-more-btn', function(e) {
+            e.preventDefault();
+            var targetId = $(this).attr('data-target');
+            var $description = $('#' + targetId);
+            var $btn = $(this);
+            
+            if (!$description.length) return;
+            
+            if ($description.hasClass('expanded')) {
+                // Collapse
+                $description.removeClass('expanded');
+                $btn.text('Ver más');
+            } else {
+                // Expand
+                $description.addClass('expanded');
+                $btn.text('Ver menos');
+            }
+        });
+    }, 200);
+});
