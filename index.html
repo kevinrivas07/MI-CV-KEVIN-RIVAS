@@ -462,7 +462,7 @@
                 <div class="col-md-6 col-lg-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <img src="assets/imgs/web-1.jpg" alt="Sistema de Gestión Clínica" class="card-img-top">
+                            <img src="./assets/imgs/Logocitamed.png" alt="Sistema de Gestión Clínica" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Citamed</h5>
@@ -482,13 +482,14 @@
                                 completa y eficiente. Este trabajo colaborativo es fundamental para avanzar en nuestros
                                 estudios universitarios y aportar valor real a la
                                 comunidad.</p>
+                            <span class="read-more-btn" data-target="portfolio-description-1">Ver más</span>
                             <div class="tech-stack">
                                 <span class="badge">React</span>
                                 <span class="badge">Node.js</span>
                                 <span class="badge">MongoDB</span>
                             </div>
                             <div class="portfolio-actions">
-                                <a href="#" class="btn"><span>Ver Proyecto</span></a>
+                                <a href="https://citamedfront.vercel.app/" target="_blank" class="btn"><span>Ver Proyecto</span></a>
                             </div>
                         </div>
                     </div>
@@ -496,7 +497,7 @@
                 <div class="col-md-6 col-lg-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <img src="assets/imgs/web-2.jpg" alt="API REST Empresarial" class="card-img-top">
+                            <img src="./assets/imgs/mundo.ico" alt="API REST Empresarial" class="card-img-top">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">El Mundo de la Tecnología</h5>
@@ -513,13 +514,14 @@
                                 React que incluye seguridad reCAPTCHA. Este proyecto es un verdadero testimonio del gran
                                 trabajo en equipo y demuestra cómo la colaboración
                                 efectiva puede generar soluciones innovadoras para problemas reales.</p>
+                            <span class="read-more-btn" data-target="portfolio-description-2">Ver más</span>
                             <div class="tech-stack">
                                 <span class="badge">Express.js</span>
                                 <span class="badge">MySQL</span>
                                 <span class="badge">JWT</span>
                             </div>
                             <div class="portfolio-actions">
-                                <a href="#" class="btn"><span>Ver Proyecto</span></a>
+                                <a href="https://elmundodelatecnologiaf.vercel.app/" target="_blank" class="btn"><span>Ver Proyecto</span></a>
                             </div>
                         </div>
                     </div>
@@ -527,10 +529,10 @@
                 <div class="col-md-6 col-lg-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <img src="assets/imgs/web-3.jpg" alt="Dashboard Administrativo" class="card-img-top">
+                            <img src="./assets/imgs/gestor.jpeg" alt="Dashboard Administrativo" class="card-img-top">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Gestion Documental</h5>
+                            <h5 class="card-title">Gestion Documental (Interno)</h5>
                             <span class="project-subtitle">Aplicacion web para llenado y firma de documentos PDf</span>
                             <p class="card-text">Sistema diseñado para la Clínica de la Visión del Valle con el objetivo
                                 de
@@ -552,20 +554,21 @@
                 <div class="col-md-6 col-lg-6">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <img src="assets/imgs/web-4.jpg" alt="Sistema de Soporte Técnico" class="card-img-top">
+                            <img src="./assets/imgs/gestor-form.png" alt="Gestor de Tarea" class="card-img-top">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Sistema de Soporte Técnico</h5>
-                            <span class="project-subtitle">Plataforma de Tickets</span>
-                            <p class="card-text">Plataforma web para gestión de tickets de soporte técnico con
-                                seguimiento de incidencias y comunicación con usuarios.</p>
+                            <h5 class="card-title">Gestor de Tarea</h5>
+                            <span class="project-subtitle">Portal Corporativo</span>
+                            <p class="card-text">Un sistema completo para gestionar el trabajo interno del equipo: creación de tareas, asignación de responsables, 
+                                seguimiento de estados y métricas de productividad. Diseñado, desarrollado y entregado en tiempo récord.</p>
                             <div class="tech-stack">
+                                <span class="badge">React</span>
                                 <span class="badge">Node.js</span>
                                 <span class="badge">MongoDB</span>
                                 <span class="badge">Socket.io</span>
                             </div>
                             <div class="portfolio-actions">
-                                <a href="#" class="btn"><span>Ver Proyecto</span></a>
+                                <a href="https://notas-tecnologicas2.vercel.app/login" target="_blank" class="btn"><span>Ver Proyecto</span></a>
                             </div>
                         </div>
                     </div>
@@ -798,6 +801,27 @@
     <!-- JohnDoe js -->
     <script src="assets/js/johndoe.js"></script>
 
+    <!-- Ver más / Ver menos para descripciones del portafolio -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.read-more-btn');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var targetId = btn.getAttribute('data-target');
+                    var description = document.getElementById(targetId);
+                    if (!description) return;
+
+                    description.classList.toggle('expanded');
+                    if (description.classList.contains('expanded')) {
+                        btn.textContent = 'Ver menos';
+                    } else {
+                        btn.textContent = 'Ver más';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
