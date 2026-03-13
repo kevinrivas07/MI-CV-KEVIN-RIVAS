@@ -9,6 +9,10 @@
     <meta name="author" content="Kevin Alexis Rivas">
     <meta name="keywords" content="desarrollador backend, fullstack, react, nodejs, mongodb, soporte técnico, sistemas">
     <title>Kevin Alexis Rivas - Desarrollador Backend & FullStack</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/imgs/favicon.png">
+    <link href="assets/favicon.ico" rel="icon">
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + JohnDoe main styles -->
@@ -79,7 +83,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                        <a href="#portfolio" class="nav-link">Mis Proyectos</a>
                     </li>
                     <li class="nav-item">
                         <a href="#certifications" class="nav-link">Certificaciones</a>
@@ -662,43 +666,75 @@
 
 
     <!--Certifications Section-->
-    <section class="section" id="certifications">
-        <div class="container">
-            <h2 class="mb-5">Certificaciones <span class="text-danger">&</span> Logros</h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <i class="ti-medall icon-lg mb-3"></i>
-                            <h5 class="card-title">Técnico en Sistemas</h5>
-                            <p class="card-text">Servicio Nacional de Aprendizaje (SENA)<br><small
-                                    class="text-muted">2020 - 2022</small></p>
+<section class="section" id="certifications">
+    <div class="container">
+        <h2 class="mb-5 text-center">Certificaciones <span class="text-danger">&</span> Logros</h2>
+
+        <!-- Featured certificate -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="card shadow-sm border-0 certification-card">
+                    <div class="card-body text-center p-3 p-md-4">
+                        <img src="assets/imgs/certificacion.jpeg"
+                             alt="Certificado Full Stack Empresarial con Spring Boot y Angular"
+                             class="img-fluid rounded certification-image certificate-zoom"
+                             id="main-certificate">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0 certification-card h-100">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title mb-2 text-danger text-uppercase small">Certificación Destacada</h5>
+                        <h3 class="card-title mb-3">Full Stack Empresarial con Spring Boot y Angular</h3>
+                        <p class="card-text mb-2">
+                            Programa profesional completado en <strong>Dev Senior Code</strong>, enfocado en el desarrollo
+                            de aplicaciones empresariales con <strong>Spring Boot</strong> y <strong>Angular</strong>.
+                        </p>
+                        <p class="card-text mb-0">
+                            <small class="text-muted">Fecha de emisión: 14/11/2025</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other certifications -->
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="card mb-4 certification-card">
+                    <div class="card-body">
+                        <img src="assets/imgs/html y css.jpeg"
+                             alt="Certificado HTML y CSS desde CERO"
+                             class="certification-image certificate-zoom">
+                        <div class="cert-info">
+                            <h5 class="card-title">HTML y CSS desde CERO</h5>
+                            <p class="card-text mb-1">Programa intensivo sobre maquetación responsiva, componentes reutilizables y buenas prácticas de accesibilidad 
+                                para construir interfaces optimizadas con HTML5 y CSS3.</p>
+                            <p class="card-text mb-0"><small class="text-muted">Fecha de emisión: 27/04/2025</small></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <i class="ti-cup icon-lg mb-3"></i>
-                            <h5 class="card-title">Desarrollo Full Stack</h5>
-                            <p class="card-text">Especialización en React, Node.js y MongoDB<br><small
-                                    class="text-muted">Autodidacta</small></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body text-center">
-                            <i class="ti-shield icon-lg mb-3"></i>
-                            <h5 class="card-title">Soporte Técnico</h5>
-                            <p class="card-text">Certificación en mantenimiento de sistemas<br><small
-                                    class="text-muted">5 años experiencia</small></p>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="card mb-4 certification-card">
+                    <div class="card-body">
+                        <img src="assets/imgs/git.jpeg"
+                             alt="Certificado Introducción a Git y GitHub"
+                             class="certification-image certificate-zoom">
+                        <div class="cert-info">
+                            <h5 class="card-title">Introducción a Git y GitHub</h5>
+                            <p class="card-text mb-1">Capacitación orientada al versionamiento profesional de proyectos con Git: gestión de ramas, 
+                                flujos colaborativos, code reviews y despliegues continuos soportados en GitHub.</p>
+                            <p class="card-text mb-0"><small class="text-muted">Fecha de emisión: 27/04/2025</small></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+    </div>
+</section>
 
     <div class="section contact" id="contact">
         <div id="map" class="map"></div>
@@ -804,6 +840,7 @@
     <!-- Ver más / Ver menos para descripciones del portafolio -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Ver más / Ver menos en proyectos
             var buttons = document.querySelectorAll('.read-more-btn');
             buttons.forEach(function (btn) {
                 btn.addEventListener('click', function (e) {
@@ -818,6 +855,40 @@
                     } else {
                         btn.textContent = 'Ver más';
                     }
+                });
+            });
+
+            // Modal simple para ver certificados en grande
+            var certImages = document.querySelectorAll('.certificate-zoom');
+            certImages.forEach(function (mainCert) {
+                mainCert.addEventListener('click', function () {
+                    var overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = 0;
+                    overlay.style.left = 0;
+                    overlay.style.width = '100%';
+                    overlay.style.height = '100%';
+                    overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                    overlay.style.display = 'flex';
+                    overlay.style.alignItems = 'center';
+                    overlay.style.justifyContent = 'center';
+                    overlay.style.zIndex = 9999;
+                    overlay.style.cursor = 'zoom-out';
+
+                    var img = document.createElement('img');
+                    img.src = mainCert.src;
+                    img.alt = mainCert.alt;
+                    img.style.maxWidth = '95%';
+                    img.style.maxHeight = '95%';
+                    img.style.borderRadius = '10px';
+                    img.style.boxShadow = '0 15px 40px rgba(0,0,0,0.6)';
+
+                    overlay.appendChild(img);
+                    document.body.appendChild(overlay);
+
+                    overlay.addEventListener('click', function () {
+                        document.body.removeChild(overlay);
+                    });
                 });
             });
         });
