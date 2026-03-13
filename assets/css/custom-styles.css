@@ -270,18 +270,18 @@
 #service .card-header {
     background: transparent;
     border: none;
-    padding: 40px 20px 30px;
+    padding: 40px 20px 20px;
     text-align: center;
     position: relative;
 }
 
 #service .card-header.has-icon {
-    padding: 40px 20px 30px;
+    padding: 40px 20px 20px;
 }
 
-#service .card-header.has-icon i {
-    font-size: 2.5rem;
-    color: #dc3545;
+/* Emoji en lugar del ícono ti- */
+#service .card-header .service-emoji {
+    font-size: 2.4rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -292,33 +292,12 @@
     box-shadow: 0 5px 15px rgba(220, 53, 69, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin: 0 auto;
-    position: relative;
 }
 
-#service .card-header.has-icon i::after {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, #dc3545, #ff6b6b);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-#service .card:hover .card-header.has-icon i {
+#service .card:hover .card-header .service-emoji {
     transform: scale(1.15) rotate(5deg);
     background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
     box-shadow: 0 8px 20px rgba(220, 53, 69, 0.25);
-    color: #c82333;
-}
-
-#service .card:hover .card-header.has-icon i::after {
-    opacity: 1;
 }
 
 #service .card-body {
@@ -946,5 +925,152 @@
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: 25px;
+    }
+}
+
+/* ============================================
+   RESUME SECTION STYLES
+   ============================================ */
+
+#resume .card {
+    border: 1px solid #ebebeb;
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+    overflow: hidden;
+    animation: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#resume .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(220, 53, 69, 0.09);
+}
+
+/* Card header */
+#resume .card-header {
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 24px 16px;
+}
+
+#resume .card-header h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+#resume .card-header .line {
+    height: 3px;
+    width: 36px;
+    background: #dc3545;
+    border-radius: 2px;
+    margin: 0;
+}
+
+/* Card body */
+#resume .card-body {
+    padding: 24px;
+}
+
+/* Fecha */
+#resume .card-body h6.title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #dc3545 !important;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+#resume .card-body h6.title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    background: #dc3545;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+/* Cargo / nombre del curso */
+#resume .card-body p:not(.subtitle) {
+    font-size: 1rem;
+    color: #2a2a2a;
+    font-weight: 500;
+    margin-bottom: 2px;
+    line-height: 1.4;
+}
+
+/* Institución */
+#resume .card-body p + p:not(.subtitle) {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+/* Descripción */
+#resume .card-body .subtitle {
+    font-size: 0.92rem;
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* Separador entre bloques */
+#resume .card-body hr {
+    border: none;
+    border-top: 1px dashed #ebebeb;
+    margin: 16px 0;
+}
+
+/* ── Habilidades & Idiomas ── */
+#resume .card-body h6:not(.title) {
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+/* Barra de progreso */
+#resume .progress {
+    height: 7px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    margin-bottom: 16px !important;
+    overflow: hidden;
+}
+
+#resume .progress-bar.bg-danger {
+    background: linear-gradient(90deg, #dc3545, #ff6b6b) !important;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Brillo animado sobre la barra */
+#resume .progress-bar.bg-danger::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-20deg);
+    animation: shimmer 2.8s infinite;
+}
+
+@keyframes shimmer {
+    0%   { left: -40%; }
+    100% { left: 130%; }
+}
+
+@media (max-width: 768px) {
+    #resume .card-body {
+        padding: 18px;
     }
 }
