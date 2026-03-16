@@ -1085,9 +1085,8 @@
 
 /* Links más compactos */
 .navbar .nav-link {
-    font-size: 1.19rem;
-    font-weight: 900;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
     padding: 6px 10px !important;
     white-space: nowrap;
     color: #2a2a2a;
@@ -1118,12 +1117,15 @@
 }
 
 .brand-img {
-    width: 150px;
-    height: 150px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50% !important;
     object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
+    object-position: center;
+    border: 2px solid #dc3545;
+    flex-shrink: 0;
+    display: block;
+    overflow: hidden;
 }
 
 .brand-txt {
@@ -1146,11 +1148,13 @@
     line-height: 1.3;
 }
 
-/* Distribuir los tres grupos uniformemente */
-.navbar-collapse {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
+/* Distribuir los tres grupos uniformemente — SOLO en desktop */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 /* Responsive: ocultar brand-subtitle en pantallas medias */
@@ -1170,17 +1174,145 @@
     }
 }
 
-@media (max-width: 991px) {
+
+
+
+
+/* ============================================
+   RESPONSIVE — MÓVIL COMPLETO
+   ============================================ */
+
+/* ── Navbar desktop (>991px): flex entre los 3 grupos ── */
+@media (min-width: 992px) {
     .navbar-collapse {
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* ── Navbar móvil (≤991px) ── */
+@media (max-width: 991px) {
+
+    /* NO tocar display — Bootstrap lo maneja con JS */
+    .navbar-collapse {
+        width: 100%;
+        padding: 6px 0 10px;
     }
 
+    /* Ocultar la foto del brand en móvil */
     .navbar-nav.brand {
-        padding: 8px 0;
+        display: none !important;
     }
 
-    .brand-subtitle {
+    .navbar-nav.mr-auto,
+    .navbar-nav.ml-auto {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    /* Links del menú */
+    .navbar .nav-link {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        padding: 12px 6px !important;
+        border-bottom: 1px solid #f2f2f2;
         display: block;
+        width: 100%;
+        color: #2a2a2a;
+    }
+
+    .navbar .nav-link:hover {
+        color: #dc3545 !important;
+        background: #fff8f8;
+        border-radius: 6px;
+        padding-left: 12px !important;
+    }
+
+    .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+}
+
+/* ── Tablets y móviles (≤768px) ── */
+@media (max-width: 768px) {
+
+    .section {
+        padding: 36px 0 !important;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .profile-img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    #about .col-lg-4 {
+        margin-bottom: 20px;
+    }
+
+    #resume .card { margin-bottom: 20px; }
+    #resume .card-body { padding: 16px !important; }
+
+    #portfolio .card { margin-bottom: 20px; }
+    #portfolio .card-header img { height: 130px; }
+    #portfolio .portfolio-actions { flex-wrap: wrap; }
+    #portfolio .portfolio-actions .btn { width: 100%; text-align: center; }
+
+    #service .row > [class*="col-"] {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin-bottom: 14px !important;
+    }
+    #service .card-header { padding: 22px 16px 14px !important; }
+    #service .card-header .service-emoji {
+        width: 64px !important; height: 64px !important; font-size: 1.8rem !important;
+    }
+    #service .card-body { padding: 0 18px 18px !important; }
+    #service .card-title { font-size: 1.05rem !important; }
+
+    #certifications .col-lg-5,
+    #certifications .col-lg-7 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+    #certifications .col-lg-7 .certification-card .card-body { padding: 22px 16px !important; }
+    #certifications .col-lg-7 h3.card-title { font-size: 1.1rem !important; }
+    #certifications .row:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+    #certifications .row:last-child .certification-card .certification-image { max-height: 220px; }
+}
+
+/* ── Móviles pequeños (≤480px) ── */
+@media (max-width: 480px) {
+
+    .section h2 { font-size: 1.3rem; }
+
+    .header-title { font-size: 1.85rem !important; }
+    .header-subtitle { font-size: 1rem !important; }
+    .header-mono { font-size: 0.8rem !important; letter-spacing: 0.03em !important; }
+
+    #about .card-body { padding: 16px 12px !important; }
+
+    .social-links .btn {
+        font-size: 0.73rem !important;
+        padding: 4px 8px !important;
+        margin-bottom: 4px !important;
+    }
+
+    #portfolio .card-title { font-size: 1.1rem !important; }
+    #resume .card-header h4 { font-size: 1rem !important; }
+
+    #service .col-md-4,
+    #service .col-sm-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 }
