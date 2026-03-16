@@ -1081,6 +1081,7 @@
 
 .navbar {
     padding: 6px 0;
+    overflow: visible !important;
 }
 
 /* Links más compactos */
@@ -1114,18 +1115,28 @@
     gap: 10px;
     flex-shrink: 0;
     padding: 0 12px;
+    overflow: visible;
 }
 
 .brand-img {
-    width: 56px;
-    height: 56px;
+    width: 75px;
+    height: 150px;
+    min-width: 75px;
+    min-height: 75px;
     border-radius: 50% !important;
     object-fit: cover;
-    object-position: center;
-    border: 2px solid #dc3545;
+    object-position: center top;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
     flex-shrink: 0;
     display: block;
-    overflow: hidden;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.brand-img:hover {
+    transform: scale(1.05);
 }
 
 .brand-txt {
