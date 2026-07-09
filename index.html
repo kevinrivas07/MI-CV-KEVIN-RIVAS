@@ -433,12 +433,13 @@
                 <div class="col-lg-8">
                     <div class="contact-form-card">
                         <h4 class="contact-title">Envíame un mensaje</h4>
-                        <form action="">
-                            <div class="form-group"><input class="form-control" type="text" placeholder="Nombre *" required></div>
-                            <div class="form-group"><input class="form-control" type="email" placeholder="Email *" required></div>
-                            <div class="form-group"><textarea class="form-control" placeholder="Mensaje *" rows="7" required></textarea></div>
-                            <div class="form-group"><button type="submit" class="form-control btn btn-primary">Enviar Mensaje</button></div>
+                        <form id="contact-form">
+                            <div class="form-group"><input class="form-control" type="text" name="from_name" id="from_name" placeholder="Nombre *" required></div>
+                            <div class="form-group"><input class="form-control" type="email" name="from_email" id="from_email" placeholder="Email *" required></div>
+                            <div class="form-group"><textarea class="form-control" name="message" id="message" placeholder="Mensaje *" rows="7" required></textarea></div>
+                            <div class="form-group"><button type="submit" class="form-control btn btn-primary" id="submit-btn">Enviar Mensaje</button></div>
                         </form>
+                        <p id="status-message"></p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -485,9 +486,41 @@
     <!-- Isotope — CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
     <!-- Google Maps -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8"></script>
     <!-- JohnDoe JS — local -->
     <script src="assets/js/johndoe.js"></script>
+
+    <!-- EmailJS — CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init('fgmeW1X4Z4FQgGRk-');
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const statusMessage = document.getElementById('status-message');
+            const submitButton = document.getElementById('submit-btn');
+            const originalText = submitButton.textContent;
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            emailjs.sendForm('service_ta31qps', 'template_gxsuzvw', this)
+                .then(function () {
+                    statusMessage.textContent = 'Mensaje enviado correctamente.';
+                    document.getElementById('contact-form').reset();
+                }, function (error) {
+                    statusMessage.textContent = 'Error al enviar el mensaje.';
+                    console.error('Error:', error);
+                })
+                .finally(function () {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
